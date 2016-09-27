@@ -1,0 +1,44 @@
+body{
+  background-color: orange;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+main {
+  padding-top: 10px;
+
+}
+
+main .row {
+  margin-bottom: 20px;
+}
+
+.box {
+  height: 550px;
+  padding-top: 10px;
+}
+
+
+.orange {
+  text-align: center;
+/* background-color: orange;*/
+}
+.col-2 .orange{
+  text-align: left;
+
+}
+ button{
+  height: 30px;
+  font-size: 14px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1 px solid gray;
+}
+#url-text, textarea{
+  width: 453px;
+  margin:5px; 
+ }
+ul {
+    list-style:none;
+    padding-left:0;
+}​

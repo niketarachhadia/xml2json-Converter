@@ -1,0 +1,21 @@
+{
+  "name": "xml2json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "file-system": "^2.2.1",
+    "fs": "0.0.1-security",
+    "mongoose": "^4.6.1",
+    "request": "^2.75.0",
+    "xml2js": "^0.4.17"
+  }
+}
