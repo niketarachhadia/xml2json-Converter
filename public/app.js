@@ -8,6 +8,7 @@ var Xml2Json = function(){
 	this.main = $('main');
 	this.main.on('click','li',this.onExistingDocumentClick.bind(this));
 	this.main.on('click', 'li .delete-document', this.onDeleteDocumentClick.bind(this));
+	$('#xml-text, #url-text').on('input',this.onTextInputChange.bind(this));
 	this.documentListTemplate = Handlebars.compile($("#document-list-template").html());
  	this.getDocuments();
 };
@@ -90,10 +91,10 @@ Xml2Json.prototype.getExistingDocument = function(id){
 		
 	ajax.done(this.onGetExistingDocumentDone.bind(this));
 };
-Xml2Json.prototype.onGetExistingDocumentDone = function(document){
-		$('#xml-text').val(document.xml_doc);
-		$('#json-text').val(JSON.stringify(JSON.parse(document.json_doc),null,2));
-		$('#doc-name').val(document.doc_name);
+Xml2Json.prototype.onGetExistingDocumentDone = function(doc){
+		$('#xml-text').val(doc.xml_doc);
+		$('#json-text').val(JSON.stringify(JSON.parse(doc.json_doc),null,2));
+		$('#doc-name').val(doc.doc_name);
 };
 // on delete click
 Xml2Json.prototype.onDeleteDocumentClick = function(event){
@@ -106,6 +107,16 @@ Xml2Json.prototype.deleteDocument = function(id){
 		dataType: 'json'
 	});
 	 ajax.done(this.getDocuments.bind(this));	
+};
+Xml2Json.prototype.onTextInputChange = function(event){
+	var id = event.target.id;
+	var allInputs = $('input[type=text], textarea');
+	for(var index in allInputs){
+		if(id!==allInputs[index].id){
+			$('#'+allInputs[index].id).val('');
+		}
+	}
+	
 };
 
  $(document).ready(function() {
