@@ -91,16 +91,23 @@ app.get('/documents', function(req, res){
 		res.json(documents);
 	});
 });
-app.get('/documents/:id', function(req, res){
+app.get('/documents/:id/:mode', function(req, res){
 	id = req.params.id;
-        Document.findById(id,function(err, document){
-                if(err){
-                        return res.status(500).json({
-                                message: 'Internal Server Error'
-                        });
-                }
-                res.json(document);
-       });
+    Document.findById(id,function(err, document){
+      if(err){
+        return res.status(500).json({
+          message: 'Internal Server Error'
+        });
+      }
+      
+      if(req.params.mode=='download'){
+      	res.header("Content-Type", "application/octet-stream");
+      	res.header("Content-Disposition", "attachment; filename="+document.doc_name);
+      	res.json(document.json_doc);
+      }else{
+      	res.json(document);
+      }   
+   });
 });
 app.delete('/documents/:id',function(req,res){
 	Document.findByIdAndRemove(req.params.id,function(err,document){

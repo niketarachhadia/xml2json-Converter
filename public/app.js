@@ -1,9 +1,12 @@
 var Xml2Json = function(){
 	this.documents=[];
+	this.selectedDocumentId = null;
 	this.documentList = $('.document-list');
 	
 	this.convertBtn = $('#convert-btn');
 	this.convertBtn.click(this.onConvertBtnClick.bind(this));
+	this.downloadBtn = $('#download-btn');
+	this.downloadBtn.click(this.download.bind(this));
 
 	this.main = $('main');
 	this.main.on('click','li',this.onExistingDocumentClick.bind(this));
@@ -17,7 +20,7 @@ var Xml2Json = function(){
 
 Xml2Json.prototype.getDocuments = function(newDocument){
 	if(newDocument!==undefined && newDocument._id!==undefined){
-		
+		this.selectedDocumentId = newDocument._id;
 		$('#xml-text').val(newDocument.xml_doc);
 		$('#json-text').val(JSON.stringify(JSON.parse(newDocument.json_doc),null,2));
 		$('#doc-name').val(newDocument.doc_name);
@@ -80,11 +83,17 @@ Xml2Json.prototype.addDocument = function(xmlOrUrl,name,mode){
 Xml2Json.prototype.onExistingDocumentClick = function(event) {
 	
 	var existingDocumentId = $(event.target).parents('li').data('id');
+	this.selectedDocumentId = existingDocumentId;
 	this.getExistingDocument(existingDocumentId);
 
 };
+Xml2Json.prototype.download=function(){
+	if(this.selectedDocumentId!=null){
+		window.open('/documents/'+this.selectedDocumentId+'/download');
+	}
+}
 Xml2Json.prototype.getExistingDocument = function(id){
-	var ajax = $.ajax('/documents/'+id,{
+	var ajax = $.ajax('/documents/'+id+'/data',{
 		type: 'GET',
 		dataType:'json'
 	});
@@ -100,6 +109,12 @@ Xml2Json.prototype.onGetExistingDocumentDone = function(doc){
 Xml2Json.prototype.onDeleteDocumentClick = function(event){
 	var documentId = $(event.target).parents('li').data('id');
 	this.deleteDocument(documentId);
+	if(documentId === this.selectedDocumentId){
+		var allInputs = $('input[type=text], textarea');
+		for(var index in allInputs){
+			$('#'+allInputs[index].id).val('');
+		}
+	}
 };
 Xml2Json.prototype.deleteDocument = function(id){
 	var ajax = $.ajax('/documents/'+id,{
