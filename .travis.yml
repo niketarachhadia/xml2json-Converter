@@ -10,5 +10,4 @@ addons:
     - mongodb-org-server
 deploy:
   provider: heroku
-  app: still-sierra-81249
- 
+  app: still-sierra-81249 
