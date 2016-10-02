@@ -48,7 +48,7 @@ describe('Xml2Json', function() {
         .end(function(err, res){
 					var id=res.body._id;
 					chai.request(app)
-							.get('/documents/'+id)
+							.get('/documents/'+id+'/data')
 							.end(function(err, res){
 								should.equal(err,null);
 								res.should.have.status(200);
