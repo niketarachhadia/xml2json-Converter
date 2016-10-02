@@ -56,6 +56,10 @@ Xml2Json.prototype.onConvertBtnClick = function(event){
 		alert("error");
 		return;
 	}
+	if(name == ''){
+		alert('Name can not be empty');
+		return;
+	}
 	if(url!==""){
 		var mode = 'url';
 		this.addDocument(url,name,mode);
