@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CSS Responsive Grid Challenge</title>
+  <title>Xml To JSON</title>
 
   <!-- Responsive viewport tag, tells small screens that it's responsive -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,25 +18,25 @@
     <div class="row">
       <div class="col-5">
         <div class="box orange">
-          <label><strong>Option 1: Enter URL to XML Document -- OR</strong></label>
+          <label>Option 1: Enter URL to XML Document -- OR</label>
           <input type="text" id="url-text" name="url"/> <br>
-          <label><strong>Option 2: Copy-paste XML document below</strong></label>
+          <label>Option 2: Copy-paste XML document below</label>
           <textarea id="xml-text" rows="26"></textarea>  
-          <span><strong>Name:</strong></span>
+          <span>Name:</span>
            <input type="text" id="doc-name" name="doc-name"/>
-          <button id="convert-btn"><strong>CONVERT</strong></button>       
+          <button id="convert-btn">CONVERT</button>       
         </div>
       </div>
       <div class="col-5">
         <div class="box orange">
-           <label><strong> Result: JSON Document</strong></label>
+           <label> Result: JSON Document</label>
            <textarea id="json-text" rows="29" readonly></textarea> 
-           <button id="download-btn"><strong>DOWNLOAD</strong></button>
+           <button id="download-btn">DOWNLOAD</button>
         </div>
       </div>
       <div class="col-2">
         <div class="box orange">
-          <label><strong>Existing Documents</strong></label>
+          <label>Existing Documents</label>
           <ul class="document-list">
             
           </ul>
@@ -53,7 +53,7 @@
     <li data-id ="{{ _id }}">
         <div class="display">
           <a href="#">
-              <strong><span class="doc-name">{{doc_name}}</span></strong>       
+              <span class="doc-name">{{doc_name}}</span>       
           </a>
           <a href="#" class="delete-document" aria-label="Delete Document">
               <i class="fa fa-times" aria-hidden="true"></i>
