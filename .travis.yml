@@ -11,6 +11,6 @@ addons:
 deploy:
   provider: heroku
   api_key:
-    secure: b33d6227-cd3f-44c4-b0ea-6207e96403ed
+    secure: d69a529f-1126-4b4f-b975-a4ec9e87cd8b
   app: still-sierra-81249 
   
