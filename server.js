@@ -101,8 +101,12 @@ app.get('/documents/:id/:mode', function(req, res){
       }
       
       if(req.params.mode=='download'){
+		var fileName=document.doc_name;
+		if(!fileName.endsWith(".json")){
+			fileName=fileName+".json";
+		}
       	res.header("Content-Type", "application/octet-stream");
-      	res.header("Content-Disposition", "attachment; filename="+document.doc_name);
+      	res.header("Content-Disposition", "attachment; filename="+fileName);
       	res.json(document.json_doc);
       }else{
       	res.json(document);
