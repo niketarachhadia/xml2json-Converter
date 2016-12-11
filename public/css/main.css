@@ -47,7 +47,7 @@ main .row {
   text-align: left;
 }
 #url-text, textarea{
-  width: 453px;
+  width: 100%;
   margin:5px; 
  }
  input{
@@ -66,7 +66,7 @@ label{
 
 }
 #doc-name{
-  width: 250px;
+  width: 50%;
 }
 a{
     text-decoration: none;
@@ -91,4 +91,12 @@ a:hover {
 /* selected link */
 a:active {
     color: yellow;
+}
+
+.container {
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
 }
