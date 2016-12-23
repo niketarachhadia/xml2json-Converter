@@ -19,14 +19,15 @@ button:hover {
 }
 body{
   background-image: url("../images/background.jpg");
-  background-size: contain;
+  background-size: cover;
   margin: 0;
   font-family: "Roboto", sans-serif;
+  
 }
 
 main {
   padding-top: 10px;
-
+  width=90%;
 }
 
 main .row {
